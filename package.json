@@ -1,19 +1,20 @@
 {
-  "name": "n8n-nodes-<...>",
-  "version": "0.1.0",
+  "name": "n8n-nodes-miniflux",
+  "version": "0.0.1",
   "description": "",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "n8n-node-athon"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://www.thomasmartens.eu/",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Thomas Martens",
+    "email": "thomas@thomasmartens.eu"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/that-one-tom/n8n-nodes-miniflux.git"
   },
   "main": "index.js",
   "scripts": {
@@ -30,12 +31,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/MinifluxApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/Miniflux/Miniflux.node.js"
     ]
   },
   "devDependencies": {

@@ -1,13 +1,13 @@
 {
   "name": "n8n-nodes-miniflux",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Connect n8n to your Miniflux feed reader",
   "keywords": [
     "n8n-community-node-package",
     "n8n-node-athon"
   ],
   "license": "MIT",
-  "homepage": "https://www.thomasmartens.eu/",
+  "homepage": "https://github.com/that-one-tom/n8n-nodes-miniflux",
   "author": {
     "name": "Thomas Martens",
     "email": "thomas@thomasmartens.eu"

@@ -36,4 +36,4 @@ export async function minifluxApiRequest(
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}
-};
+}

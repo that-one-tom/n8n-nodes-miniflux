@@ -60,9 +60,9 @@ export class Miniflux implements INodeType {
 				return feeds.map((e: { title: string; id: number; }) => { return {
 					name: e.title,
 					value: e.id,
-				} });
-			}
-		}
+				}; });
+			},
+		},
 	};
 
 	async execute(this: IExecuteFunctions): Promise < INodeExecutionData[][] > {
@@ -98,7 +98,7 @@ export class Miniflux implements INodeType {
 				const status = this.getNodeParameter('status', i) as string;
 				await minifluxApiRequest.call(this, 'PUT', '/v1/entries', {
 					entry_ids: [ entryId ],
-					status: status,
+					status,
 				});
 				const updatedEntry = await minifluxApiRequest.call(this, 'GET', `/v1/entries/${entryId}`);
 				returnData.push(updatedEntry);

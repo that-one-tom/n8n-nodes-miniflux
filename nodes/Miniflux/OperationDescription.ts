@@ -87,7 +87,7 @@ export const operationFields: INodeProperties[] = [
 					{
 						name: 'Removed',
 						value: 'removed',
-					}
+					},
 				],
 				default: 'unread',
 				description: 'Filter by status',
@@ -133,12 +133,12 @@ export const operationFields: INodeProperties[] = [
 					{
 						name: 'Descending',
 						value: 'desc',
-					}
+					},
 				],
 				default: 'asc',
 				description: 'Order direction',
-			}
-		]
+			},
+		],
 	},
 	// ----------------------------------
 	//         update: feedEntry
@@ -169,7 +169,7 @@ export const operationFields: INodeProperties[] = [
 			{
 				name: 'Unread',
 				value: 'unread',
-			}
+			},
 		],
 		displayOptions: {
 			show: {

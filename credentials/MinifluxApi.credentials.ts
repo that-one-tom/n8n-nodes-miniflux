@@ -1,11 +1,11 @@
 import {
+	IAuthenticateGeneric,
 	ICredentialType,
 	INodeProperties,
-	IAuthenticateGeneric,
 } from 'n8n-workflow';
 
 export class MinifluxApi implements ICredentialType {
-	name = 'MinifluxApi';
+	name = 'minifluxApi';
 	displayName = 'Miniflux API';
 	properties: INodeProperties[] = [
 		{
@@ -21,15 +21,15 @@ export class MinifluxApi implements ICredentialType {
 			default: '',
 			typeOptions: {
 				password: true,
-			}
-		}
+			},
+		},
 	];
 	authenticate = {
 		type: 'generic',
 		properties: {
 			headers: {
-				'X-Auth-Token': '={{$credentials.apiToken}}'
-			}
+				'X-Auth-Token': '={{$credentials.apiToken}}',
+			},
 		},
 	} as IAuthenticateGeneric;
 }

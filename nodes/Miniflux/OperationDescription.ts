@@ -2,7 +2,7 @@ import { INodeProperties } from 'n8n-workflow';
 
 export const operationFields: INodeProperties[] = [
 	// ----------------------------------
-	//          getFeedEntries
+	//         getAll: feedEntry
 	// ----------------------------------
 	{
 		displayName: 'Feed ID',
@@ -10,7 +10,8 @@ export const operationFields: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['getFeedEntries'],
+				resource: ['feedEntry'],
+				operation: ['getAll'],
 			},
 		},
 		default: '',

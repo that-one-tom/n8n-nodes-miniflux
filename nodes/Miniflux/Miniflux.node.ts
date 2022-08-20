@@ -6,7 +6,7 @@ export class Miniflux implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Miniflux',
 		name: 'Miniflux',
-		icon: 'file:miniflux.png',
+		icon: 'file:Miniflux.svg',
 		group: ['input'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -18,7 +18,7 @@ export class Miniflux implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'MinifluxApi',
+				name: 'minifluxApi',
 				required: true,
 			},
 		],
@@ -37,11 +37,11 @@ export class Miniflux implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'Feed Entries',
-						value: 'feedEntries',
+						name: 'Feed Entry',
+						value: 'feedEntry',
 					},
 				],
-				default: 'feedEntries',
+				default: 'feedEntry',
 			},
 			{
 				displayName: 'Operation',
@@ -50,15 +50,15 @@ export class Miniflux implements INodeType {
 				noDataExpression: true,
 				displayOptions: {
 					show: {
-						resource: ['feedEntries'],
+						resource: ['feedEntry'],
 					},
 				},
 				options: [
 					{
-						name: 'Get Feed Entries',
-						value: 'getFeedEntries',
-						description: 'Retrieve multiple feed entries',
-						action: 'Get Feed Entries',
+						name: 'Get All',
+						value: 'getAll',
+						description: 'Retrieve all feed entries up to the limit',
+						action: 'Get all feed entries',
 						routing: {
 							request: {
 								method: 'GET',
@@ -71,13 +71,13 @@ export class Miniflux implements INodeType {
 										properties: {
 											property: 'entries',
 										},
-									}
-								]
-							}
+									},
+								],
+							},
 						},
 					},
 				],
-				default: 'getFeedEntries',
+				default: 'getAll',
 			},
 			...operationFields,
 		],

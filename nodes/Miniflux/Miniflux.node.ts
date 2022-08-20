@@ -10,7 +10,7 @@ export class Miniflux implements INodeType {
 		group: ['input'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-		description: 'Fetch posts from your Miniflux feeds',
+		description: 'Connect n8n to your Miniflux feed reader',
 		defaults: {
 			name: 'Miniflux',
 		},
@@ -40,44 +40,12 @@ export class Miniflux implements INodeType {
 						name: 'Feed Entry',
 						value: 'feedEntry',
 					},
+					{
+						name: 'Feed',
+						value: 'feed',
+					},
 				],
 				default: 'feedEntry',
-			},
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['feedEntry'],
-					},
-				},
-				options: [
-					{
-						name: 'Get All',
-						value: 'getAll',
-						description: 'Retrieve all feed entries up to the limit',
-						action: 'Get all feed entries',
-						routing: {
-							request: {
-								method: 'GET',
-								url: '=/v1/feeds/{{$parameter.feedId}}/entries',
-							},
-							output: {
-								postReceive: [
-									{
-										type: 'rootProperty',
-										properties: {
-											property: 'entries',
-										},
-									},
-								],
-							},
-						},
-					},
-				],
-				default: 'getAll',
 			},
 			...operationFields,
 		],

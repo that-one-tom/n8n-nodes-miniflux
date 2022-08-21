@@ -43,19 +43,19 @@ export class Miniflux implements INodeType {
 				options: [{
 					name: 'Category',
 					value: 'category',
-					description: 'A category is a group of feeds',
+					description: 'A group of feeds',
 				}, {
 					name: 'Entry',
 					value: 'entry',
-					description: 'An entry is a single post',
+					description: 'A single post',
 				}, {
 					name: 'Feed',
 					value: 'feed',
-					description: 'A feed is a list of posts',
+					description: 'A list of posts',
 				}, {
 					name: 'Feed Entry',
 					value: 'feedEntry',
-					description: 'A feed entry is an entry from a specific feed',
+					description: 'An entry from a specific feed',
 				}, ],
 				default: 'feedEntry',
 			},
@@ -68,6 +68,17 @@ export class Miniflux implements INodeType {
 			async getFeeds(this: ILoadOptionsFunctions) {
 				const feeds = await minifluxApiRequest.call(this, 'GET', '/v1/feeds');
 				return feeds.map((e: {
+					title: string;id: number;
+				}) => {
+					return {
+						name: e.title,
+						value: e.id,
+					};
+				});
+			},
+			async getCategories(this: ILoadOptionsFunctions) {
+				const categories = await minifluxApiRequest.call(this, 'GET', '/v1/categories');
+				return categories.map((e: {
 					title: string;id: number;
 				}) => {
 					return {
@@ -109,9 +120,32 @@ export class Miniflux implements INodeType {
 		}
 
 		// ----------------------------------
-		//				 update: feedEntry
+		//         getAll: entry
 		// ----------------------------------
-		if (resource === 'feedEntry' && operation === 'update') {
+		if (resource === 'entry' && operation === 'getAll') {
+			const {
+				categoryId,
+				limit,
+				status,
+				order,
+				direction
+			} = this.getNodeParameter('additionalOptions', 0) as IDataObject;
+
+			const entries = await minifluxApiRequest.call(this, 'GET', `/v1/entries`, {}, {
+				category_id: categoryId as number,
+				limit: limit as number,
+				status: status as string,
+				order: order as string,
+				direction: direction as string,
+			});
+
+			returnData.push(...entries.entries);
+		}
+
+		// ----------------------------------
+		//				 update: entry
+		// ----------------------------------
+		if (resource === 'entry' && operation === 'update') {
 			for (let i = 0; i < items.length; i++) {
 				const entryId = this.getNodeParameter('entryId', i) as number;
 				const status = this.getNodeParameter('status', i) as string;

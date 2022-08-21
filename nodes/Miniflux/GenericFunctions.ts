@@ -31,6 +31,7 @@ export async function minifluxApiRequest(
 		uri: `${credentials.appUrl}${endpoint}`,
 		json: true,
 	};
+	// console.log('options', JSON.stringify(options, null, 2));
 	try {
 		return await this.helpers.request!(options);
 	} catch (error) {

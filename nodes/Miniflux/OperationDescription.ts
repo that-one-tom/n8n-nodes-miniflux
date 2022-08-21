@@ -7,133 +7,6 @@ import {
 
 export const operationFields: INodeProperties[] = [
 	// ----------------------------------
-	//         getAll: feedEntry
-	// ----------------------------------
-	{
-		displayName: 'Operation',
-		name: 'operation',
-		type: 'options',
-		noDataExpression: true,
-		displayOptions: {
-			show: {
-				resource: ['feedEntry'],
-			},
-		},
-		options: [{
-			name: 'Get All',
-			value: 'getAll',
-			description: 'Retrieve all feed entries up to the limit',
-			action: 'Get all feed entries',
-		}, ],
-		default: 'getAll',
-	},
-	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Feed',
-		name: 'feedId',
-		type: 'options',
-		typeOptions: {
-			loadOptionsMethod: 'getFeeds',
-		},
-		displayOptions: {
-			show: {
-				resource: ['feedEntry'],
-				operation: ['getAll'],
-			},
-		},
-		default: '',
-		required: true,
-		description: 'ID of the feed to get entries from. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
-	},
-	{
-		displayName: 'Options',
-		name: 'additionalOptions',
-		type: 'collection',
-		placeholder: 'Add Option',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: ['feedEntry'],
-				operation: ['getAll'],
-			},
-		},
-		options: [{
-				displayName: 'Limit',
-				name: 'limit',
-				type: 'number',
-				typeOptions: {
-					minValue: 1,
-				},
-				default: 50,
-				description: 'Max number of results to return',
-			},
-			{
-				displayName: 'Status',
-				name: 'status',
-				type: 'options',
-				options: [{
-						name: 'Read',
-						value: 'read',
-					},
-					{
-						name: 'Unread',
-						value: 'unread',
-					},
-					{
-						name: 'Removed',
-						value: 'removed',
-					},
-				],
-				default: 'unread',
-				description: 'Filter by status',
-			},
-			{
-				displayName: 'Order',
-				name: 'order',
-				type: 'options',
-				options: [{
-						name: 'Category ID',
-						value: 'category_id',
-					},
-					{
-						name: 'Category Title',
-						value: 'category_title',
-					},
-					{
-						name: 'ID',
-						value: 'id',
-					},
-					{
-						name: 'Published At',
-						value: 'published_at',
-					},
-					{
-						name: 'Status',
-						value: 'status',
-					},
-				],
-				default: 'id',
-				description: 'Order by field',
-			},
-			{
-				displayName: 'Direction',
-				name: 'direction',
-				type: 'options',
-				options: [{
-						name: 'Ascending',
-						value: 'asc',
-					},
-					{
-						name: 'Descending',
-						value: 'desc',
-					},
-				],
-				default: 'asc',
-				description: 'Order direction',
-			},
-		],
-	},
-	// ----------------------------------
 	//         update: entry
 	// ----------------------------------
 	{
@@ -221,6 +94,17 @@ export const operationFields: INodeProperties[] = [
 				},
 				default: '',
 				description: 'ID of the category to get entries for. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
+			},
+			{
+				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+				displayName: 'Feed',
+				name: 'feedId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getFeeds',
+				},
+				default: '',
+				description: 'ID of the feed to get entries from. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>.',
 			},
 			{
 				displayName: 'Limit',

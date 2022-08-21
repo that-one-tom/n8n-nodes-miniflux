@@ -106,7 +106,7 @@ export class Miniflux implements INodeType {
 				limit,
 				status,
 				order,
-				direction
+				direction,
 			} = this.getNodeParameter('additionalOptions', 0) as IDataObject;
 
 			const feedEntries = await minifluxApiRequest.call(this, 'GET', `/v1/feeds/${feedId}/entries`, {}, {
@@ -128,7 +128,7 @@ export class Miniflux implements INodeType {
 				limit,
 				status,
 				order,
-				direction
+				direction,
 			} = this.getNodeParameter('additionalOptions', 0) as IDataObject;
 
 			const entries = await minifluxApiRequest.call(this, 'GET', `/v1/entries`, {}, {

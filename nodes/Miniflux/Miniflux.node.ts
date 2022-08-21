@@ -9,7 +9,9 @@ import {
 	INodeType,
 	INodeTypeDescription,
 } from 'n8n-workflow';
-import { minifluxApiRequest } from './GenericFunctions';
+import {
+	minifluxApiRequest
+} from './GenericFunctions';
 
 import {
 	operationFields
@@ -39,18 +41,22 @@ export class Miniflux implements INodeType {
 				type: 'options',
 				noDataExpression: true,
 				options: [{
-						name: 'Feed Entry',
-						value: 'feedEntry',
-					},
-					{
-						name: 'Feed',
-						value: 'feed',
-					},
-					{
-						name: 'Category',
-						value: 'category',
-					},
-				],
+					name: 'Category',
+					value: 'category',
+					description: 'A category is a group of feeds',
+				}, {
+					name: 'Entry',
+					value: 'entry',
+					description: 'An entry is a single post',
+				}, {
+					name: 'Feed',
+					value: 'feed',
+					description: 'A feed is a list of posts',
+				}, {
+					name: 'Feed Entry',
+					value: 'feedEntry',
+					description: 'A feed entry is an entry from a specific feed',
+				}, ],
 				default: 'feedEntry',
 			},
 			...operationFields,
@@ -61,10 +67,14 @@ export class Miniflux implements INodeType {
 		loadOptions: {
 			async getFeeds(this: ILoadOptionsFunctions) {
 				const feeds = await minifluxApiRequest.call(this, 'GET', '/v1/feeds');
-				return feeds.map((e: { title: string; id: number; }) => { return {
-					name: e.title,
-					value: e.id,
-				}; });
+				return feeds.map((e: {
+					title: string;id: number;
+				}) => {
+					return {
+						name: e.title,
+						value: e.id,
+					};
+				});
 			},
 		},
 	};
@@ -81,7 +91,12 @@ export class Miniflux implements INodeType {
 		if (resource === 'feedEntry' && operation === 'getAll') {
 			const feedId = this.getNodeParameter('feedId', 0) as number;
 
-			const { limit, status, order, direction } = this.getNodeParameter('additionalOptions', 0) as IDataObject;
+			const {
+				limit,
+				status,
+				order,
+				direction
+			} = this.getNodeParameter('additionalOptions', 0) as IDataObject;
 
 			const feedEntries = await minifluxApiRequest.call(this, 'GET', `/v1/feeds/${feedId}/entries`, {}, {
 				limit: limit as number,
@@ -101,7 +116,7 @@ export class Miniflux implements INodeType {
 				const entryId = this.getNodeParameter('entryId', i) as number;
 				const status = this.getNodeParameter('status', i) as string;
 				await minifluxApiRequest.call(this, 'PUT', '/v1/entries', {
-					entry_ids: [ entryId ],
+					entry_ids: [entryId],
 					status,
 				});
 				const updatedEntry = await minifluxApiRequest.call(this, 'GET', `/v1/entries/${entryId}`);

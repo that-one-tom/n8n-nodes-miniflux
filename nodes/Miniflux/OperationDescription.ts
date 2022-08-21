@@ -24,12 +24,7 @@ export const operationFields: INodeProperties[] = [
 			value: 'getAll',
 			description: 'Retrieve all feed entries up to the limit',
 			action: 'Get all feed entries',
-		}, {
-			name: 'Update',
-			value: 'update',
-			description: 'Mark feed entries as read/unread',
-			action: 'Update feed entries',
-		}],
+		}, ],
 		default: 'getAll',
 	},
 	{
@@ -96,8 +91,7 @@ export const operationFields: INodeProperties[] = [
 				displayName: 'Order',
 				name: 'order',
 				type: 'options',
-				options: [
-					{
+				options: [{
 						name: 'Category ID',
 						value: 'category_id',
 					},
@@ -125,8 +119,7 @@ export const operationFields: INodeProperties[] = [
 				displayName: 'Direction',
 				name: 'direction',
 				type: 'options',
-				options: [
-					{
+				options: [{
 						name: 'Ascending',
 						value: 'asc',
 					},
@@ -141,15 +134,33 @@ export const operationFields: INodeProperties[] = [
 		],
 	},
 	// ----------------------------------
-	//         update: feedEntry
+	//         update: entry
 	// ----------------------------------
+	{
+		displayName: 'Operation',
+		name: 'operation',
+		type: 'options',
+		noDataExpression: true,
+		displayOptions: {
+			show: {
+				resource: ['entry'],
+			},
+		},
+		options: [{
+			name: 'Update',
+			value: 'update',
+			description: 'Mark feed entries as read/unread',
+			action: 'Update feed entries',
+		}],
+		default: 'update',
+	},
 	{
 		displayName: 'Entry ID',
 		name: 'entryId',
 		type: 'number',
 		displayOptions: {
 			show: {
-				resource: ['feedEntry'],
+				resource: ['entry'],
 				operation: ['update'],
 			},
 		},
@@ -161,8 +172,7 @@ export const operationFields: INodeProperties[] = [
 		displayName: 'Status',
 		name: 'status',
 		type: 'options',
-		options: [
-			{
+		options: [{
 				name: 'Read',
 				value: 'read',
 			},
@@ -173,7 +183,7 @@ export const operationFields: INodeProperties[] = [
 		],
 		displayOptions: {
 			show: {
-				resource: ['feedEntry'],
+				resource: ['entry'],
 				operation: ['update'],
 			},
 		},

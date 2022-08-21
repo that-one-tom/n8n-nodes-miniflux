@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-miniflux",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Connect n8n to your Miniflux feed reader",
   "keywords": [
     "n8n-community-node-package",

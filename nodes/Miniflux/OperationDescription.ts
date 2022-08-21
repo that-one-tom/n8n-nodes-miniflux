@@ -199,12 +199,27 @@ export const operationFields: INodeProperties[] = [
 			value: 'getAll',
 			description: 'Retrieve all feeds',
 			action: 'Get all feeds',
-			routing: {
-				request: {
-					method: 'GET',
-					url: '=/v1/feeds',
-				},
+		}, ],
+		default: 'getAll',
+	},
+	// ----------------------------------
+	//         getAll: category
+	// ----------------------------------
+	{
+		displayName: 'Operation',
+		name: 'operation',
+		type: 'options',
+		noDataExpression: true,
+		displayOptions: {
+			show: {
+				resource: ['category'],
 			},
+		},
+		options: [{
+			name: 'Get All',
+			value: 'getAll',
+			description: 'Retrieve all categories',
+			action: 'Get all categories',
 		}, ],
 		default: 'getAll',
 	},

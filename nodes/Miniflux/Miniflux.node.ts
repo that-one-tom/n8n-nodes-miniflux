@@ -46,6 +46,10 @@ export class Miniflux implements INodeType {
 						name: 'Feed',
 						value: 'feed',
 					},
+					{
+						name: 'Category',
+						value: 'category',
+					},
 				],
 				default: 'feedEntry',
 			},
@@ -111,6 +115,14 @@ export class Miniflux implements INodeType {
 		if (resource === 'feed' && operation === 'getAll') {
 			const feeds = await minifluxApiRequest.call(this, 'GET', '/v1/feeds');
 			returnData.push(...feeds);
+		}
+
+		// ----------------------------------
+		//         getAll: category
+		// ----------------------------------
+		if (resource === 'category' && operation === 'getAll') {
+			const categories = await minifluxApiRequest.call(this, 'GET', '/v1/categories');
+			returnData.push(...categories);
 		}
 
 		// console.log('returnData', JSON.stringify(returnData.slice(0, 3)));

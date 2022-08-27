@@ -10,7 +10,8 @@ import {
 	INodeTypeDescription,
 } from 'n8n-workflow';
 import {
-	minifluxApiRequest
+	extractPlainText,
+	minifluxApiRequest,
 } from './GenericFunctions';
 
 import {
@@ -103,6 +104,7 @@ export class Miniflux implements INodeType {
 				status,
 				order,
 				direction,
+				plainText,
 			} = this.getNodeParameter('additionalOptions', 0) as IDataObject;
 
 			const endpoint = feedId ? `/v1/feeds/${feedId}/entries` : '/v1/entries';
@@ -114,6 +116,12 @@ export class Miniflux implements INodeType {
 				order: order as string,
 				direction: direction as string,
 			});
+
+			if (plainText) {
+				for (const entry of entries.entries) {
+					entry.content_plain = extractPlainText(entry.content);
+				}
+			}
 
 			returnData.push(...entries.entries);
 		}

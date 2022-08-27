@@ -21,6 +21,12 @@ So far the node can fetch your feeds, categories, and entries (with some of the 
 
 # Changelog
 
+## 0.0.7
+
+* Added *Plain Text* option. Converts HTML `content` into plain text `content_plain` when enabled.
+* Order options alphabetically, renamed *Direction* into *Order Direction*
+* Updated screenshot
+
 ## 0.0.6
 
 * Merged *Feed Entry* and *Entry* resources together under *Entry*

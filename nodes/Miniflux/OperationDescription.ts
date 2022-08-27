@@ -117,26 +117,6 @@ export const operationFields: INodeProperties[] = [
 				description: 'Max number of results to return',
 			},
 			{
-				displayName: 'Status',
-				name: 'status',
-				type: 'options',
-				options: [{
-						name: 'Read',
-						value: 'read',
-					},
-					{
-						name: 'Unread',
-						value: 'unread',
-					},
-					{
-						name: 'Removed',
-						value: 'removed',
-					},
-				],
-				default: 'unread',
-				description: 'Filter by status',
-			},
-			{
 				displayName: 'Order',
 				name: 'order',
 				type: 'options',
@@ -165,7 +145,7 @@ export const operationFields: INodeProperties[] = [
 				description: 'Order by field',
 			},
 			{
-				displayName: 'Direction',
+				displayName: 'Order Direction',
 				name: 'direction',
 				type: 'options',
 				options: [{
@@ -178,7 +158,33 @@ export const operationFields: INodeProperties[] = [
 					},
 				],
 				default: 'asc',
-				description: 'Order direction',
+			},
+			{
+				displayName: 'Plain Text',
+				name: 'plainText',
+				type: 'boolean',
+				default: true,
+				description: 'Whether to extract plain text',
+			},
+			{
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				options: [{
+						name: 'Read',
+						value: 'read',
+					},
+					{
+						name: 'Unread',
+						value: 'unread',
+					},
+					{
+						name: 'Removed',
+						value: 'removed',
+					},
+				],
+				default: 'unread',
+				description: 'Filter by status',
 			},
 		],
 	},

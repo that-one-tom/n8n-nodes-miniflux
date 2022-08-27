@@ -13,6 +13,10 @@ import {
 	NodeOperationError
 } from 'n8n-workflow';
 
+import {
+	convert
+} from 'html-to-text';
+
 export async function minifluxApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,
 	method: string,
@@ -37,4 +41,13 @@ export async function minifluxApiRequest(
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}
+}
+
+export function extractPlainText(
+	html: string,
+) {
+	const text = convert(html, {
+		wordwrap: null,
+	});
+	return text;
 }

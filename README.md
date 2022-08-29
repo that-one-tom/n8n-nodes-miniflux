@@ -8,7 +8,7 @@ So far the node can fetch your feeds, categories, and entries (with some of the 
 
 # Installation
 
-* [Installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) for n8n community nodes, enter `n8n-nodes-miniflux` when asked for the package name.
+* [Installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) for n8n community nodes. Enter `n8n-nodes-miniflux` when n8n asks for the package name to install.
 
 # Requirements
 

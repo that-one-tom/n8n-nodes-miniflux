@@ -8,9 +8,9 @@ So far the node can fetch your feeds, categories, and entries (with some of the 
 
 # Installation
 
-* [Installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) for n8n community nodes.
-* Enter `n8n-nodes-miniflux` when n8n asks for the package name to install.
-* In Miniflux, head to *Settings* > *API Keys* > *Create a new API key* in order to retrieve the API key required to authenticate.
+* [Installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) for n8n community nodes
+* Enter `n8n-nodes-miniflux` when n8n asks for the package name to install
+* In Miniflux, head to *Settings* > *API Keys* > *Create a new API key* in order to retrieve the API key required to authenticate
 
 # Requirements
 

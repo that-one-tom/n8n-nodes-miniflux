@@ -24,12 +24,12 @@ export class MinifluxApi implements ICredentialType {
 			},
 		},
 	];
-	authenticate = {
+	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
 			headers: {
 				'X-Auth-Token': '={{$credentials.apiToken}}',
 			},
 		},
-	} as IAuthenticateGeneric;
+	};
 }

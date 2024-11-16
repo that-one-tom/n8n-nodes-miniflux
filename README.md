@@ -23,6 +23,10 @@ So far the node can fetch your feeds, categories, and entries (with some of the 
 
 # Changelog
 
+## 0.2.1
+
+* Version bump as I have messed up publishing the NPM package
+
 ## 0.2.0
 
 * Added *Original Article* option ([context](https://github.com/that-one-tom/n8n-nodes-miniflux/issues/2)). This feature can potentially result in a large number of HTTP requests being sent, so make sure you start with a low limit when enabling this option. 

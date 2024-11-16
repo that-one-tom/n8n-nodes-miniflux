@@ -104,6 +104,7 @@ export class Miniflux implements INodeType {
 				order,
 				direction,
 				plainText,
+				originalArticle
 			} = this.getNodeParameter('additionalOptions', 0) as IDataObject;
 
 			const endpoint = feedId ? `/v1/feeds/${feedId}/entries` : '/v1/entries';
@@ -119,6 +120,17 @@ export class Miniflux implements INodeType {
 			if (plainText) {
 				for (const entry of entries.entries) {
 					entry.content_plain = extractPlainText(entry.content);
+				}
+			}
+
+			if (originalArticle) {
+				for (const entry of entries.entries) {
+					const originalArticleEndpoint = `/v1/entries/${entry.id}/fetch-content`;
+					const originalArticle = await minifluxApiRequest.call(this, 'GET', originalArticleEndpoint, {});
+					entry.original_article_html = originalArticle.content;
+					if (plainText) {
+						entry.original_article_plain = extractPlainText(originalArticle.content).trim();
+					}
 				}
 			}
 

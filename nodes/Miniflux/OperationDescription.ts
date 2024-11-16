@@ -157,6 +157,13 @@ export const operationFields: INodeProperties[] = [
 				default: 'asc',
 			},
 			{
+				displayName: 'Original Article',
+				name: 'originalArticle',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to fetch the original article through Miniflux',
+			},
+			{
 				displayName: 'Plain Text',
 				name: 'plainText',
 				type: 'boolean',

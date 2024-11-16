@@ -23,6 +23,10 @@ So far the node can fetch your feeds, categories, and entries (with some of the 
 
 # Changelog
 
+## 0.2.2
+
+* Return to original name to avoid breaking existing workflows
+
 ## 0.2.1
 
 * Version bump as I have messed up publishing the NPM package

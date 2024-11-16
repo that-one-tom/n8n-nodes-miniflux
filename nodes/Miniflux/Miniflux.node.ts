@@ -20,7 +20,8 @@ import {
 export class Miniflux implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Miniflux',
-		name: 'miniflux',
+		// eslint-disable-next-line n8n-nodes-base/node-class-description-name-miscased
+		name: 'Miniflux',
 		icon: 'file:Miniflux.svg',
 		group: ['input'],
 		version: 1,

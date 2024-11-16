@@ -1,16 +1,10 @@
 import {
-	IExecuteFunctions
-} from 'n8n-core';
-
-import {
-	OptionsWithUri
-} from 'request';
-
-import {
+	IExecuteFunctions,
+	IRequestOptions,
 	IDataObject,
 	ILoadOptionsFunctions,
 	NodeApiError,
-	NodeOperationError
+	IHttpRequestMethods
 } from 'n8n-workflow';
 
 import {
@@ -19,13 +13,13 @@ import {
 
 export async function minifluxApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,
-	method: string,
+	method: IHttpRequestMethods,
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
 ) {
 	const credentials = await this.getCredentials('minifluxApi');
-	const options: OptionsWithUri = {
+	const options: IRequestOptions = {
 		headers: {
 			'X-Auth-Token': credentials.apiToken,
 		},

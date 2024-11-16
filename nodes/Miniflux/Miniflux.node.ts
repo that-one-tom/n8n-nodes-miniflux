@@ -1,14 +1,13 @@
-import {
-	IExecuteFunctions,
-} from 'n8n-core';
-
-import {
+import type {
 	IDataObject,
+	IExecuteFunctions,
 	ILoadOptionsFunctions,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
 } from 'n8n-workflow';
+// import { NodeConnectionType, NodeOperationError } from 'n8n-workflow';
+
 import {
 	extractPlainText,
 	minifluxApiRequest,
@@ -21,7 +20,7 @@ import {
 export class Miniflux implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Miniflux',
-		name: 'Miniflux',
+		name: 'miniflux',
 		icon: 'file:Miniflux.svg',
 		group: ['input'],
 		version: 1,

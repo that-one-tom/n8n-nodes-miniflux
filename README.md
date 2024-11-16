@@ -14,7 +14,7 @@ So far the node can fetch your feeds, categories, and entries (with some of the 
 
 # Requirements
 
-* n8n version 0.189.0 or later
+* n8n version 1.67.1 or later (the current version of this node might work with earlier version too, but I have only tested 1.67.1)
 * Miniflux v2
 
 # Preview
@@ -22,6 +22,10 @@ So far the node can fetch your feeds, categories, and entries (with some of the 
 ![Screenshot](./img/screenshot.png)
 
 # Changelog
+
+## 0.1.0
+
+* Updated dependencies in line with the current n8n-nodes-starter template
 
 ## 0.0.7
 
